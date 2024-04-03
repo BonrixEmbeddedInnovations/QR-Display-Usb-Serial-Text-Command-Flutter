@@ -1,0 +1,15 @@
+com.bonrix.paytm_qr_flutter.app-jetified-window-java-1.0.0-beta04-0 /Users/bhargavhada/.gradle/caches/transforms-3/0995137ea67abbc95435b3e0cd275366/transformed/jetified-window-java-1.0.0-beta04/res
+com.bonrix.paytm_qr_flutter.app-core-1.6.0-1 /Users/bhargavhada/.gradle/caches/transforms-3/52e501c5e48572243a03527d0d1eb094/transformed/core-1.6.0/res
+com.bonrix.paytm_qr_flutter.app-jetified-window-1.0.0-beta04-2 /Users/bhargavhada/.gradle/caches/transforms-3/5cc11e4fa50d596c9169a42d5d76b4c7/transformed/jetified-window-1.0.0-beta04/res
+com.bonrix.paytm_qr_flutter.app-jetified-annotation-experimental-1.1.0-3 /Users/bhargavhada/.gradle/caches/transforms-3/7d3b6cb0b4c77218ecedf5cc5195e719/transformed/jetified-annotation-experimental-1.1.0/res
+com.bonrix.paytm_qr_flutter.app-debug-4 /Users/bhargavhada/Desktop/paytm_flutter/android/app/src/debug/res
+com.bonrix.paytm_qr_flutter.app-main-5 /Users/bhargavhada/Desktop/paytm_flutter/android/app/src/main/res
+com.bonrix.paytm_qr_flutter.app-pngs-6 /Users/bhargavhada/Desktop/paytm_flutter/build/app/generated/res/pngs/debug
+com.bonrix.paytm_qr_flutter.app-resValues-7 /Users/bhargavhada/Desktop/paytm_flutter/build/app/generated/res/resValues/debug
+com.bonrix.paytm_qr_flutter.app-rs-8 /Users/bhargavhada/Desktop/paytm_flutter/build/app/generated/res/rs/debug
+com.bonrix.paytm_qr_flutter.app-mergeDebugResources-9 /Users/bhargavhada/Desktop/paytm_flutter/build/app/intermediates/incremental/debug/mergeDebugResources/merged.dir
+com.bonrix.paytm_qr_flutter.app-mergeDebugResources-10 /Users/bhargavhada/Desktop/paytm_flutter/build/app/intermediates/incremental/debug/mergeDebugResources/stripped.dir
+com.bonrix.paytm_qr_flutter.app-merged_res-11 /Users/bhargavhada/Desktop/paytm_flutter/build/app/intermediates/merged_res/debug
+com.bonrix.paytm_qr_flutter.app-packaged_res-12 /Users/bhargavhada/Desktop/paytm_flutter/build/bitmap/intermediates/packaged_res/debug
+com.bonrix.paytm_qr_flutter.app-packaged_res-13 /Users/bhargavhada/Desktop/paytm_flutter/build/fluttertoast/intermediates/packaged_res/debug
+com.bonrix.paytm_qr_flutter.app-packaged_res-14 /Users/bhargavhada/Desktop/paytm_flutter/build/usb_serial/intermediates/packaged_res/debug
