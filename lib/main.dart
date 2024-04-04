@@ -1,10 +1,18 @@
 import 'dart:async';
+import 'dart:io';
+import 'dart:ui';
+import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_file_dialog/flutter_file_dialog.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import 'package:usb_serial/transaction.dart';
 import 'package:usb_serial/usb_serial.dart';
 import 'package:image/image.dart' as IMG;
 import 'apputil/util.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -23,6 +31,7 @@ class _MyAppState extends State<MyApp> {
   StreamSubscription<String>? _subscription;
   Transaction<String>? _transaction;
   UsbDevice? _device;
+  TextEditingController _textController = TextEditingController();
 
   Future<bool> _connectTo(device) async {
     _serialData.clear();
@@ -145,17 +154,132 @@ class _MyAppState extends State<MyApp> {
             ..._ports,
             Text('Status: $_status\n'),
             Text('info: ${_port.toString()}\n'),
+
             ElevatedButton(
               child: Text('Welcome'),
               onPressed: () {
                 onWelcome();
               },
             ),
+            ListTile(
+              title: TextField(
+                controller: _textController,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Amount',
+                ),
+              ),
+              trailing: ElevatedButton(
+                  child: Text('Generate Qr'),
+                  onPressed: () {
+                    String amt = _textController.text;
+                    if (amt.isEmpty) {
+                      showToast('Enter valid amount');
+                      return;
+                    }
+                    String qr =
+                        'upi://pay?pa=shraddhatradelink@yesbank&pn=Shraddha&oobe=fos123&qrst=stk&tr=11805909345abcd&am=' +
+                            amt +
+                            '&cu=INR&tn=11805909345abcd&tid=11805909345abcd';
+                    generateQr(qr,_textController.text);
+                  }),
+            ),
             // Image.memory(widget.imageData),
             Text("Result Data", style: Theme.of(context).textTheme.titleLarge),
             ..._serialData,
           ])),
         ));
+  }
+
+  Future<void> generateQr(String qr,String amt) async {
+    IMG.Image? img = await qrMake(qr);
+    // IMG.Image qr_resized = IMG.copyResize(img!, width: 280, height: 280);
+
+    Uint8List imageData = await loadAsset(context, 'assets/images/topay2.bmp');
+    print('imageData  ${imageData.lengthInBytes}');
+    IMG.Image? imgTopay = IMG.decodeBmp(imageData);
+    IMG.Image resizedTopay = IMG.copyResize(imgTopay!, width: 320, height: 480);
+
+    IMG.Image? finalimage = await mergeToPin(imgTopay, img!, amt);
+    IMG.Image resizedFinal =
+        IMG.copyResize(finalimage!, width: 320, height: 480);
+
+    _port!.write(toBmp16(resizedFinal));
+  }
+
+  Future<IMG.Image?> mergeToPin(
+      IMG.Image imageToPay, IMG.Image qrImage, String amount) async {
+    final int w_bitmap_topay = imageToPay.width;
+
+    final int w_bitmap_qr = qrImage.width;
+
+    final int x = ((w_bitmap_topay - w_bitmap_qr) / 2).round();
+    final int y = ((w_bitmap_topay - w_bitmap_qr) / 2 + 160).round();
+
+    final IMG.Image result = IMG.Image(imageToPay.width, imageToPay.height);
+
+    IMG.copyInto(result, imageToPay, dstX: 0, dstY: 0);
+    IMG.copyInto(result, qrImage, dstX: x, dstY: y);
+
+    final color = IMG.getColor(0, 0, 255); // Color blue (0, 0, 255)
+
+    IMG.drawString(
+        result, IMG.arial_48, (w_bitmap_topay ~/ 2) - 75, 115, '\u20B9 $amount',
+        color: color);
+    return result;
+  }
+
+  Future<IMG.Image?> mergeToPin1(
+      IMG.Image imageToPay, IMG.Image qrImage, String amount) async {
+    final int w_bitmap_topay = imageToPay.width;
+
+    final int w_bitmap_qr = qrImage.width;
+
+    final int x = ((w_bitmap_topay - w_bitmap_qr) / 2).round();
+    final int y = ((w_bitmap_topay - w_bitmap_qr) / 2 + 160).round();
+
+    final IMG.Image result = IMG.Image(imageToPay.width, imageToPay.height);
+
+    IMG.copyInto(result, imageToPay, dstX: 0, dstY: 0);
+    IMG.copyInto(result, qrImage, dstX: x, dstY: y);
+
+    final IMG.Image finalImage = IMG.Image(imageToPay.width, imageToPay.height);
+    IMG.copyInto(finalImage, result, dstX: 0, dstY: 0);
+
+    final IMG.Image textImage = IMG.Image(imageToPay.width, imageToPay.height);
+    IMG.drawString(textImage, IMG.arial_24, imageToPay.width ~/ 2 - 90, 115,
+        '\u20B9 $amount');
+
+    final IMG.Image mergedImage =
+        IMG.Image(imageToPay.width, imageToPay.height);
+    IMG.copyInto(mergedImage, finalImage, dstX: 0, dstY: 0);
+    IMG.copyInto(mergedImage, textImage, dstX: 0, dstY: 0);
+
+    // return Uint8List.fromList(IMG.encodePng(mergedImage));
+    return mergedImage;
+  }
+
+  Future<IMG.Image?> qrMake(String qr) async {
+    // Convert QR code to image
+    final imageData = await QrPainter(
+      data: qr,
+      version: QrVersions.auto,
+      gapless: false,
+      color: Colors.black,
+      emptyColor: Colors.white,
+    ).toImageData(200.0);
+
+    // Check if imageData is null or not
+    if (imageData != null) {
+      // Convert ByteData to Uint8List
+      final Uint8List bytes = imageData.buffer.asUint8List();
+
+      // Decode image using image package
+      return IMG.decodeImage(bytes);
+    } else {
+      print("Failed to generate QR code image.");
+      return null;
+    }
   }
 
   Future<void> onWelcome() async {

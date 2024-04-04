@@ -224,6 +224,18 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "qr",
+      "rootUri": "file:///Users/bhargavhada/.pub-cache/hosted/pub.dev/qr-3.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.16"
+    },
+    {
+      "name": "qr_flutter",
+      "rootUri": "file:///Users/bhargavhada/.pub-cache/hosted/pub.dev/qr_flutter-4.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///Users/bhargavhada/Bhargav%20Workspace/Personal%20Work/Flutter/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -314,7 +326,7 @@
       "languageVersion": "3.3"
     }
   ],
-  "generated": "2024-04-03T09:09:40.139524Z",
+  "generated": "2024-04-04T08:21:55.762874Z",
   "generator": "pub",
   "generatorVersion": "3.3.3"
 }
