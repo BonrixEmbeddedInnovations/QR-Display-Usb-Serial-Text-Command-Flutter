@@ -24,7 +24,7 @@ Connect the Display Module: Use the USB cable to connect your 3.5 inch display m
 ### Clone the Repository:
 
 - Copy code
-- git clone https://github.com/BonrixEmbeddedInnovations/Qr-Display-Serial-Usb-Text-Command.git
+- git clone [https://github.com/BonrixEmbeddedInnovations/Qr-Display-Serial-Usb-Text-Command.git](https://github.com/BonrixEmbeddedInnovations/QR-Display-Usb-Serial-Text-Command-Flutter.git)
 - cd 3.5inch-QR-Code-Display
 
 
