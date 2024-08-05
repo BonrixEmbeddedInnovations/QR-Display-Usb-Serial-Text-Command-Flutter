@@ -285,7 +285,7 @@
     },
     {
       "name": "usb_serial",
-      "rootUri": "file:///Users/bhargavhada/.pub-cache/hosted/pub.dev/usb_serial-0.5.1",
+      "rootUri": "file:///Users/bhargavhada/.pub-cache/hosted/pub.dev/usb_serial-0.5.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -326,7 +326,7 @@
       "languageVersion": "3.3"
     }
   ],
-  "generated": "2024-04-04T08:21:55.762874Z",
+  "generated": "2024-07-29T09:13:24.438900Z",
   "generator": "pub",
   "generatorVersion": "3.3.3"
 }

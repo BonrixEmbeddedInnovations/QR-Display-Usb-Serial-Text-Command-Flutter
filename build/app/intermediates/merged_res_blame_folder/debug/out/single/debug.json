@@ -22,5 +22,9 @@
     {
         "merged": "com.bonrix.paytm_qr_flutter.app-merged_res-11:/mipmap-mdpi_ic_launcher.png.flat",
         "source": "com.bonrix.paytm_qr_flutter.app-main-5:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.bonrix.paytm_qr_flutter.app-merged_res-11:/xml_usb_device_filter.xml.flat",
+        "source": "com.bonrix.paytm_qr_flutter.app-main-5:/xml/usb_device_filter.xml"
     }
 ]

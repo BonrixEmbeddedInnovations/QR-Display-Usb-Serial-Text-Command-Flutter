@@ -334,7 +334,7 @@
         <entry key="usb_serial">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/usb_serial-0.5.1/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/usb_serial-0.5.2/lib" />
             </list>
           </value>
         </entry>
@@ -419,7 +419,7 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/term_glyph-1.2.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/test_api-0.6.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/typed_data-1.3.2/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/usb_serial-0.5.1/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/usb_serial-0.5.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/vector_math-2.1.4/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/vm_service-13.0.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/win32-5.4.0/lib" />
